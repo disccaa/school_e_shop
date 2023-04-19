@@ -1,0 +1,26 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: calc( (100% - 20px * 3) / 4);
+  padding: 16px;
+  gap: 16px;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  transition: 0.2s;
+  &:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  }
+
+  .price {
+    color: #212427;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  .manipulation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
