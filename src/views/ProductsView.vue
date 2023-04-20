@@ -6,12 +6,14 @@ import axios from 'axios'
 import ProductCard from "@/components/molecules/product-card/index.vue";
 import ADialog from "@/components/atoms/dialog/index.vue";
 import PaginationButton from "@/components/atoms/pagination/index.vue";
+import {UseFetchProducts} from "@/composebles/fetch";
 
 const isLoaded = ref(false)
 const products = ref([])
 const route = useRoute()
+console.log(route.query)
 const pages = ref(0)
-
+const {data, totalPages, params} = UseFetchProducts()
 const fetchProducts = async () => {
     isLoaded.value = false
     const product_req = await axios.get('http://localhost:8000/api/products', {
@@ -28,7 +30,8 @@ const fetchProducts = async () => {
     isLoaded.value = true
 }
 
-watch(route, async () => {
+watch(route,   async () => {
+    params.value = {...route.query}
     isLoaded.value = false
     products.value = []
     await fetchProducts()
@@ -42,14 +45,15 @@ const currentPage = ref(1)
 </script>
 <template>
 
-<div @click="isOpen = true"> click</div>
- <a-dialog v-model="isOpen">
-     <div>test</div>
- </a-dialog>
+    <div @click="isOpen = true"> click</div>
+  {{ totalPages }}
+    <a-dialog v-model="isOpen">
+        <div>test</div>
+    </a-dialog>
     <h1>Products</h1>
     <div class="container">
         <pagination-button :total-page="10" v-model="currentPage"/>
-        {{currentPage}}
+        {{ currentPage }}
         <div class="card-list">
 
             <product-card v-for="product in products" :product="product"/>
@@ -127,11 +131,12 @@ const currentPage = ref(1)
 .card-hover:hover {
     box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
+
 .card-list {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     /*justify-content: space-between;*/
-    align-content:center ;
+    align-content: center;
 }
 </style>
