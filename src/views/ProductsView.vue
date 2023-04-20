@@ -4,6 +4,7 @@ import {useRoute} from 'vue-router'
 import cartMethods from '../utils/cart'
 import axios from 'axios'
 import ProductCard from "@/components/molecules/product-card/index.vue";
+import ADialog from "@/components/atoms/dialog/index.vue";
 
 const isLoaded = ref(false)
 const products = ref([])
@@ -35,9 +36,13 @@ watch(route, async () => {
 onMounted(async () => {
     await fetchProducts()
 })
+const isOpen = ref(true)
 </script>
-
 <template>
+<div @click="isOpen = true"> click</div>
+ <a-dialog v-model="isOpen">
+     <div>test</div>
+ </a-dialog>
     <h1>Products</h1>
     <div class="container">
         <div class="card-list">
