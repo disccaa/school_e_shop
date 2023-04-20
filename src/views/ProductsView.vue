@@ -47,7 +47,7 @@ const isOpen = ref(true)
     <div class="container">
         <div class="card-list">
 
-            <product-card v-for="product in products" :product="product"/>
+            <product-card v-for="product in products" :product="product" :key="product.id"/>
         </div>
     </div>
     <div class="container">
@@ -124,6 +124,7 @@ const isOpen = ref(true)
 }
 .card-list {
     display: flex;
+    flex-direction: column;
     gap: 20px;
     flex-wrap: wrap;
     /*justify-content: space-between;*/
