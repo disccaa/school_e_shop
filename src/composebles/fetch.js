@@ -9,6 +9,7 @@ const createService = (url = 'http://localhost:8000/api/products') => {
     const fetch = async () => {
         isLoading.value = true
         data.value = await axios.get(url, {params: {...params.value}}).then(res => res.data)
+        console.log(data.value)
         isLoading.value = false
     }
     const totalPages = computed(() => {
