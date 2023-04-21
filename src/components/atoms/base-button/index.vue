@@ -1,7 +1,8 @@
 <template>
-  <button :class="['base-button', rounded ? 'base-button-rounded': '', variant ? `base-button-${variant}`: '']">
-  <slot></slot>
-  </button>
+    <button :class="['base-button', rounded ? 'base-button-rounded': '', variant ? `base-button-${variant}`: '']"
+            :style="{'--min-width': minWidth}">
+        <slot></slot>
+    </button>
 </template>
 
 <script>
@@ -11,18 +12,22 @@ export default {
 </script>
 <script setup>
 const props = defineProps({
-  rounded: {
-    type: Boolean,
-    default: false
-  },
-
-  variant: {
-    type: String,
-    validator(value) {
-      return ['grey', 'black', 'blue','white'].includes(value)
+    rounded: {
+        type: Boolean,
+        default: false
     },
-    default: 'blue'
-  }
+    minWidth: {
+        type: String,
+        default: 'fit-content'
+    },
+
+    variant: {
+        type: String,
+        validator(value) {
+            return ['grey', 'black', 'blue', 'white'].includes(value)
+        },
+        default: 'blue'
+    }
 })
 </script>
 
@@ -42,8 +47,11 @@ const props = defineProps({
   line-height: 160%;
   cursor: pointer;
   transition: all linear 0.2s;
-  &:hover{
+  min-width: var(--min-width);
+
+  &:hover {
     background: #dddddd;
+
     .base-button-black {
       background: gray;
     }
@@ -59,12 +67,14 @@ const props = defineProps({
 
     //box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 3px 2px rgba(0, 0, 0, 0.06);
   }
+
   &-white {
     border: 1px solid black;
     background: white;
     color: black;
 
   }
+
   &-grey {
     border-color: transparent;
     background: #1818181E;

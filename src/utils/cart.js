@@ -2,6 +2,19 @@ const cartMethods = {
   getCart: function () {
     return JSON.parse(localStorage.getItem('cart')) || []
   },
+  isExist: function (product) {
+    const cart = this.getCart()
+      return cart.find((item) => item.id === product.id)
+  },
+  toggleCart: function (product) {
+    const cart = this.getCart()
+    const productExists = cart.find((item) => item.id === product.id)
+    if (productExists) {
+      this.removeFromCart(product)
+    } else {
+      this.addToCart(product)
+    }
+  },
 
   addToCart: function (product) {
     const cart = this.getCart()

@@ -6,6 +6,7 @@ import ProductCard from "@/components/molecules/product-card/index.vue";
 import ADialog from "@/components/atoms/dialog/index.vue";
 import PaginationButton from "@/components/atoms/pagination/index.vue";
 import {UseFetchProducts} from "@/composebles/fetch";
+import CartProductCard from "@/components/molecules/cart-product-card/inex.vue";
 
 const route = useRoute()
 const {data, totalPages, params, page} = UseFetchProducts()
@@ -25,6 +26,7 @@ const isOpen = ref(true)
     </a-dialog>
     <h1>Products</h1>˜
     <div class="container">
+        <cart-product-card/>
         <pagination-button :total-page="totalPages" v-model="page"/>
         {{ currentPage }}
         <div class="card-list">

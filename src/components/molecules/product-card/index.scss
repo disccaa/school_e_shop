@@ -73,8 +73,8 @@
 .product-card__purchase{
   border-left: 2px solid lightgray;
   width: 33%;
-  padding-left: 20px;
   padding: 20px 0px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -82,9 +82,10 @@
   &__price{
     display: flex;
     flex-direction: column;
+    gap: 8px;
     .purchase__price__sale{
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 8px;
 
     }
