@@ -24,8 +24,10 @@
 
           </div>
           <div class="manipulation">
-            <base-button variant="white">Добавить в корзину</base-button>
-            <base-button variant="black">Узнать больше</base-button>
+            <base-button @click="cartMethods.addToCart(product)" variant="white">Добавить в корзину</base-button>
+            <router-link :to="`products/${product.id}`">
+              <base-button variant="black">Узнать больше</base-button>
+            </router-link>
           </div>
         </div>
 
@@ -38,6 +40,7 @@ import BaseButton from "@/components/atoms/base-button/index.vue";
 import BaseHeart from "@/components/atoms/heart/index.vue";
 import {currencyValidation} from "@/helpers/numberFormater";
 import {computed} from "vue";
+import cartMethods from "../../../utils/cart";
 export default {
     name: "ProductCard",
     components: {BaseHeart, BaseButton},
@@ -49,6 +52,8 @@ export default {
 
     },
     setup(props){
+      const addToCart = cartMethods.addToCart
+      console.log(addToCart)
       const saleSum = computed(()=> {
          return props.product.price*0.1;
       })
@@ -56,7 +61,7 @@ export default {
         return props.product.price*0.9;
       })
 
-      return {currencyValidation, salePrice, saleSum}
+      return {currencyValidation, salePrice, saleSum,addToCart,cartMethods}
 
     }
 
