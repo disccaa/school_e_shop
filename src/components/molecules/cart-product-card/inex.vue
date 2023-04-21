@@ -8,7 +8,10 @@
             <div class="cart-left__info info">
                 <div class="info__title"> {{ product.title }}</div>
                 <div class="info__count">
-                    <cart-count v-model="count"/>
+                    <cart-count
+                        v-model="count"
+                        @update:modelValue="newValue => count.value=newValue"
+                    />
                 </div>
             </div>
         </div>
@@ -24,7 +27,7 @@
                 <div class="initial-price">{{ product.price }}</div>
             </div>
             <div class="delete">
-                <icon-bin/>
+                <icon-bin @click="$emit('remove',product.id)" />
             </div>
         </div>
     </div>
@@ -38,33 +41,21 @@ export default {
 <script setup>
 import IconBin from '@/assets/icons/bin.svg?component'
 import CartCount from "@/components/atoms/cart-count/index.vue";
-import {ref} from "vue";
+import {ref, watch} from "vue";
+import cartMethods from "../../../utils/cart";
 import {currencyValidation} from "../../../helpers/numberFormater";
 
 const props = defineProps({
     product: {
         type: Object,
-        default: () => {
-            return {
-                id: 3,
-                title: "Смартфон Apple iPhone 13 4/128GB Pink",
-                price: 482016,
-                category: 2,
-                image: "http://localhost:8000/media/images/products/6af20553-8e9d-4654-9b04-242eee81f99b.webp",
-                count: 1
-            }
-        }
+
     }
 })
-const test = {
-    id: 3,
-    title: "Смартфон Apple iPhone 13 4/128GB Pink",
-    price: 482016,
-    category: 2,
-    image: "http://localhost:8000/media/images/products/6af20553-8e9d-4654-9b04-242eee81f99b.webp",
-    count: 1
-}
+
 const count = ref(props.product.count)
+watch(count, (a, b)=>{
+  cartMethods.changeCartCount(props.product,a)
+})
 </script>
 
 <style scoped lang="scss" src="./index.scss"/>

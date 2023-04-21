@@ -21,6 +21,7 @@ const cartMethods = {
     // check if product already exists in cart
     const productExists = cart.find((item) => item.id === product.id)
     if (!productExists) {
+      product.count= 1;
       cart.push(product)
     }
     localStorage.setItem('cart', JSON.stringify(cart))
@@ -44,6 +45,16 @@ const cartMethods = {
     const cart = this.getCart()
     const total = cart.reduce((acc, item) => acc + item.price, 0)
     return total
+  },
+  changeCartCount: function (product,count) {
+    const cart = this.getCart()
+    const updatedCart = cart.map((item) => {
+      if(item.id == product.id){
+        item.count=count
+      }
+      return item
+    })
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
   }
 }
 

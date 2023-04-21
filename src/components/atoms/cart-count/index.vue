@@ -19,8 +19,7 @@ export default {
 </script>
 <script setup>
 import IconArrow from '@/assets/icons/arrow.svg?component'
-
-const emit = defineEmits()
+const emit =defineEmits(['update:modelValue'])
 const props = defineProps({
     modelValue: {
         type: Number,

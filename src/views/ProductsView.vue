@@ -26,7 +26,6 @@ const isOpen = ref(true)
     </a-dialog>
     <h1>Products</h1>˜
     <div class="container">
-        <cart-product-card/>
         <pagination-button :total-page="totalPages" v-model="page"/>
         {{ currentPage }}
         <div class="card-list">
