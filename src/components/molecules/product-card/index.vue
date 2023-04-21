@@ -16,14 +16,20 @@
         </div>
         <div class="product-card__purchase">
           <div class="product-card__purchase__price">
-            <div class="purchase__price__sale">{{currencyValidation(product.price)}}</div>
-            <div class="purchase__price__real"></div>
+            <div class="purchase__price__sale">
+              <span class="sale-price">{{currencyValidation(product.price)}}</span>
+              <span class="sale-sum">Скидка {{currencyValidation(saleSum)}}</span>
+            </div>
+            <div class="purchase__price__real">{{currencyValidation(salePrice)}}</div>
 
+          </div>
+          <div class="manipulation">
+            <base-button variant="white">Добавить в корзину</base-button>
+            <base-button variant="black">Узнать больше</base-button>
           </div>
         </div>
 
-      <div class="manipulation">
-        </div>
+
     </div>
 </template>
 
@@ -31,6 +37,7 @@
 import BaseButton from "@/components/atoms/base-button/index.vue";
 import BaseHeart from "@/components/atoms/heart/index.vue";
 import {currencyValidation} from "@/helpers/numberFormater";
+import {computed} from "vue";
 export default {
     name: "ProductCard",
     components: {BaseHeart, BaseButton},
@@ -42,7 +49,15 @@ export default {
 
     },
     setup(props){
-      return {currencyValidation}
+      const saleSum = computed(()=> {
+         return props.product.price*0.1;
+      })
+      const salePrice = computed(()=>{
+        return props.product.price*0.9;
+      })
+
+      return {currencyValidation, salePrice, saleSum}
+
     }
 
 
