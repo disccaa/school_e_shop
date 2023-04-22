@@ -4,7 +4,7 @@
             <div class="product-card__view__img">
                 <img :src="product.image" style="width: 200px" :alt="product.title"/>
             </div>
-            <button class="product-card__view__btn">Быстрый просмотр</button>
+            <button class="product-card__view__btn" @click="$emit('more', product)">Быстрый просмотр</button>
         </div>
 
         <div class="product-card__info">
