@@ -6,6 +6,7 @@ import ProductCard from "@/components/molecules/product-card/index.vue";
 import ADialog from "@/components/atoms/dialog/index.vue";
 import PaginationButton from "@/components/atoms/pagination/index.vue";
 import {UseFetchProducts} from "@/composebles/fetch";
+import CartProductCard from "@/components/molecules/cart-product-card/inex.vue";
 
 const route = useRoute()
 const {data, totalPages, params, page} = UseFetchProducts()

@@ -2,6 +2,7 @@
     import cartMethods from '../utils/cart';
     import { ref, watch } from 'vue';
     import { onMounted } from 'vue';
+    import CartProductCard from "../components/molecules/cart-product-card/inex.vue";
 
     const cart = ref([]);
 
@@ -28,10 +29,12 @@
     <div>
         <h1>Cart</h1>
         <div v-for="item in cart" :key="item.id">
-            <img :src="item.image" :alt="item.title" />
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.price }}</p>
-            <button @click="removeItem(item.id)">Remove</button>
+          <cart-product-card
+              @remove="removeItem"
+              :product="item">
+
+          </cart-product-card>
+
         </div>
 
         <div v-if="cart.length === 0">
