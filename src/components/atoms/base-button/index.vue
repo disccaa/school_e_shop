@@ -26,7 +26,7 @@ const props = defineProps({
         validator(value) {
             return ['grey', 'black', 'blue', 'white'].includes(value)
         },
-        default: 'blue'
+        default: 'black'
     }
 })
 </script>

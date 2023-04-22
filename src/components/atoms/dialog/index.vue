@@ -39,6 +39,7 @@ export default {
         onClickOutside(dialog, () => onClose())
 
         const onClose = () => {
+            emit('close')
             emit('update:modelValue', false)
         }
 

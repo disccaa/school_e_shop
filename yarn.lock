@@ -317,6 +317,11 @@
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.2.47.tgz"
   integrity sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==
 
+"@vueform/slider@^2.1.7":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@vueform/slider/-/slider-2.1.7.tgz#8e228bd18529980d34acf6711dd6afe053a8e23d"
+  integrity sha512-wKyiVVN03RKTV2vp7r50PDq5hcM4kVVzUO2ex+BAAtrn5oX08iU5NzWTWCuH7dCkiLMDRUVravDu3B0NwaxZMQ==
+
 "@vueuse/components@^10.0.2":
   version "10.0.2"
   resolved "https://registry.npmjs.org/@vueuse/components/-/components-10.0.2.tgz"

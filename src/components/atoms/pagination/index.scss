@@ -1,9 +1,9 @@
 .pagination {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   width: fit-content;
-  margin-left: auto;
+  min-width: 500px;
 
   ul {
     position: relative;
@@ -14,7 +14,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 32px;
       height: 32px;
       border: none;
       border-radius: 4px;
@@ -24,7 +23,7 @@
       font-size: 14px;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.1s ease;
+      //transition: all 0.1s ease;
 
       &.number {
         width: 32px;
@@ -32,7 +31,7 @@
         background: #fff;
 
         a {
-          color: #000;
+          color: black;
         }
 
         span {
@@ -51,7 +50,7 @@
       }
 
       &.active {
-        background: linear-gradient(180deg, #0E5096 0%, #0274BA 100%);
+        background: black;
         color: #fff;
 
         a {
